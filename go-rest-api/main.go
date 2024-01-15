@@ -184,6 +184,46 @@ func getAllSpotInfo(w http.ResponseWriter, r *http.Request) {
 				PeakSurfSeasonEnds:      "2018-11-30",
 				Address:                 "Skeleton Bay, Namibia",
 			},
+		},
+		{
+			ID: "recH2ennHFNOtB1Wt",
+			Fields: RecordFields{
+				SurfBreak:        []string{"Point Break"},
+				DifficultyLevel:  4,
+				Destination:      "Superbank",
+				Geocode:          "🔵 eyJpIjoiU3VwZXJiYW5rLCBHb2xkIENvYXN0LCBBdXN0cmFsaWEiLCJvIjp7InN0YXR1cyI6Ik9LIiwiZm9ybWF0dGVkQWRkcmVzcyI6IlNuYXBwZXIgUm9ja3MgUmQsIENvb2xhbmdhdHRhIFF...",
+				Influencers:      []string{"recSkJ4HuvzAUBrdd"},
+				MagicSeaweedLink: "https://magicseaweed.com/Surfers-Paradise-Gold-Coast-Surf-Report/1012/",
+				Photos: []Photo{
+					{
+						ID:       "attmtbEOAQteRjz2p",
+						URL:      "https://dl.airtable.com/I4E4xZeQbO2g814udQDm_jeremy-bishop-80371-unsplash.jpg",
+						Filename: "jeremy-bishop-80371-unsplash.jpg",
+						Size:     1524876,
+						Type:     "image/jpeg",
+						Thumbnails: Thumbnails{
+							Small: Small{
+								URL:    "https://dl.airtable.com/IWP9RPvvSM2pX1sHeigV_small_jeremy-bishop-80371-unsplash.jpg",
+								Width:  48,
+								Height: 36,
+							},
+							Large: Large{
+								URL:    "https://dl.airtable.com/aBnINo8qQqDvER2f2wGg_large_jeremy-bishop-80371-unsplash.jpg",
+								Width:  683,
+								Height: 512,
+							},
+							Full: Full{
+								URL:    "https://dl.airtable.com/eZxgLD8hRI2Y27J39LNl_full_jeremy-bishop-80371-unsplash.jpg",
+								Width:  3000,
+								Height: 2250,
+							},
+						},
+					},
+				},
+				PeakSurfSeasonBegins:    "2018-11-28",
+				DestinationStateCountry: "Gold Coast, Australia",
+				PeakSurfSeasonEnds:      "2019-02-18",
+			},
 			CreatedTime: "2018-05-31T00:16:16.000Z",
 		},
 	}
