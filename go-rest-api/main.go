@@ -201,40 +201,6 @@ func homeLink(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Bienvenue sur le back de Yellowaves !")
 }
 
-func getSpotList(w http.ResponseWriter, r *http.Request) {
-	// Simule la récupération des enregistrements depuis votre source de données (base de données, fichier, etc.)
-	records := []SurfRecord{
-		{
-			Fields: RecordFields{
-				SurfBreak:       []string{"Reef Break"},
-				DifficultyLevel: 4,
-			},
-		},
-	}
-	vars := mux.Vars(r)
-	recordID := vars["id"]
-
-	for _, record := range records {
-		if record.ID == recordID {
-			json.NewEncoder(w).Encode(record)
-			return
-		}
-	}
-
-	// Convertit les enregistrements en JSON
-	jsonData, err := json.Marshal(records)
-	if err != nil {
-		http.Error(w, "Erreur lors de la conversion en JSON", http.StatusInternalServerError)
-		return
-	}
-
-	// Définit le type de contenu de la réponse HTTP comme application/json
-	w.Header().Set("Content-Type", "application/json")
-
-	// Envoie la réponse JSON
-	w.Write(jsonData)
-}
-
 func getRecordByID(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	recordID := vars["id"]
@@ -268,7 +234,6 @@ func getAllSpotInfo(w http.ResponseWriter, r *http.Request) {
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", homeLink)
-	router.HandleFunc("/spots", getSpotList).Methods("GET")
 	router.HandleFunc("/spotsAll", getAllSpotInfo).Methods("GET")
 	router.HandleFunc("/spots/{id}", getRecordByID).Methods("GET")
 
