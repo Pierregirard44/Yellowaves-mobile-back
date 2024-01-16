@@ -192,6 +192,7 @@ var records = []SurfRecord{
 			PeakSurfSeasonBegins:    "2018-11-28",
 			DestinationStateCountry: "Gold Coast, Australia",
 			PeakSurfSeasonEnds:      "2019-02-18",
+			Address:                 "Superbank, Gold Coast, Australia",
 		},
 		CreatedTime: "2018-05-31T00:16:16.000Z",
 	},
@@ -202,37 +203,20 @@ func homeLink(w http.ResponseWriter, r *http.Request) {
 }
 
 func getSpotList(w http.ResponseWriter, r *http.Request) {
-	// Simule la récupération des enregistrements depuis votre source de données (base de données, fichier, etc.)
-	records := []SurfRecord{
-		{
-			Fields: RecordFields{
-				SurfBreak:       []string{"Reef Break"},
-				DifficultyLevel: 4,
-			},
-		},
-	}
-	vars := mux.Vars(r)
-	recordID := vars["id"]
+	// Appel de la fonction avec le tableau records
+	result := records
 
-	for _, record := range records {
-		if record.ID == recordID {
-			json.NewEncoder(w).Encode(record)
-			return
-		}
-	}
-
-	// Convertit les enregistrements en JSON
-	jsonData, err := json.Marshal(records)
+	// Convertir le résultat en JSON
+	jsonResult, err := json.Marshal(result)
 	if err != nil {
-		http.Error(w, "Erreur lors de la conversion en JSON", http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
-	// Définit le type de contenu de la réponse HTTP comme application/json
+	// Définir l'en-tête de la réponse
 	w.Header().Set("Content-Type", "application/json")
 
-	// Envoie la réponse JSON
-	w.Write(jsonData)
+	// Envoyer la réponse JSON
+	w.Write(jsonResult)
 }
 
 func getRecordByID(w http.ResponseWriter, r *http.Request) {
