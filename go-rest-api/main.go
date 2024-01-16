@@ -202,26 +202,6 @@ func homeLink(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Bienvenue sur le back de Yellowaves !")
 }
 
-<<<<<<< HEAD
-=======
-func getSpotList(w http.ResponseWriter, r *http.Request) {
-	// Appel de la fonction avec le tableau records
-	result := records
-
-	// Convertir le résultat en JSON
-	jsonResult, err := json.Marshal(result)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	// Définir l'en-tête de la réponse
-	w.Header().Set("Content-Type", "application/json")
-
-	// Envoyer la réponse JSON
-	w.Write(jsonResult)
-}
-
->>>>>>> 840af9b0dcd16f7d08a7835f0713c010831521ca
 func getRecordByID(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	recordID := vars["id"]
@@ -255,7 +235,7 @@ func getAllSpotInfo(w http.ResponseWriter, r *http.Request) {
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", homeLink)
-	router.HandleFunc("/spotsAll", getAllSpotInfo).Methods("GET")
+	router.HandleFunc("/spots", getAllSpotInfo).Methods("GET")
 	router.HandleFunc("/spots/{id}", getRecordByID).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080", router))
