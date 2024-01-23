@@ -246,22 +246,27 @@ func getAllSpotInfo(w http.ResponseWriter, r *http.Request) {
 //	}
 func main() {
 	// Connexion à la base de données MySQL à distance
-	db, err := sql.Open("mysql", "root@tcp(localhost:3306)/yellowaves")
+	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/yellowaves")
 	if err != nil {
 		panic(err)
 	}
 	defer db.Close()
 
-	// Exemple de requête SELECT
+	//Exemple de requête SELECT
 	var spots struct {
-		Destination string `db:"destination"`
-		Difficulty  int    `db:"difficulty"`
+		Destination             string `db:"destination"`
+		Difficulty              int    `db:"difficulty"`
+		DestinationStateCountry string `db:"DestinationStateCountry"`
+		Photos                  string `db:"Photos"`
+		SurfBreak               string `db:"SurfBreak"`
+		PeakSurfSeasonBegins    string `db:"PeakSurfSeasonBegins"`
+		PeakSurfSeasonEnds      string `db:"PeakSurfSeasonEnds"`
 	}
-	err = db.QueryRow("SELECT * FROM yellowavestable").Scan(&spots.Destination, &spots.Difficulty)
+	err = db.QueryRow("SELECT * FROM yellowavestable").Scan(&spots.Destination, &spots.DestinationStateCountry, &spots.Difficulty, &spots.SurfBreak, &spots.Photos, &spots.PeakSurfSeasonBegins, &spots.PeakSurfSeasonEnds)
 	if err != nil {
 		panic(err)
 	}
 
 	// Utilisez les données de l'utilisateur ici
-	fmt.Println("Destination:", spots.Destination, "Difficulté:", spots.Difficulty)
+	fmt.Println("Destination:", spots.Destination, "Difficulté:", spots.Difficulty, "DestinationStateCountry:", spots.DestinationStateCountry, "SurfBreak:", spots.SurfBreak, "photos:", spots.Photos, "PeakSurfSeasonBegins:", spots.PeakSurfSeasonBegins, "PeakSurfSeasonEnds:", spots.PeakSurfSeasonEnds)
 }
