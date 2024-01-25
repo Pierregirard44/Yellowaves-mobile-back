@@ -3,7 +3,7 @@ Application mobile qui répertorie les meilleurs spots de surf !
 
 ## Conditions  
 Un mois de projet.  
-Equipe de 3 (Quentin, Pierre, Marie).  
+Equipe de 3 ([Quentin](https://www.linkedin.com/in/quentin-kerzerho/), [Pierre](https://www.linkedin.com/in/pierre-girard-468214246/), [Marie](https://www.linkedin.com/in/marie-c-97665394/)).  
 Deux semaines front, deux semaines back.  
 Rétrospective/Démonstration/MVP.  
 
