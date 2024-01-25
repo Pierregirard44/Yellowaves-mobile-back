@@ -46,3 +46,7 @@ Bienvenue dans le backend de notre projet collectif ! Ce projet est développé 
    
    ```bash
    go run . 
+
+## Configuration du frontend
+
+   Passons maintenant au frontend en suivant les étapes sur le [repository](https://github.com/adatechschool/projet-collectif-mobile-front-yellowaves) du frontend.
